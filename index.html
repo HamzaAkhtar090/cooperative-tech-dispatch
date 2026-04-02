@@ -4,451 +4,1431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cooperative Tech LLC | Genzonix Truck Dispatching</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Genzonix Dispatch | Professional Truck Dispatching Services</title>
+    <meta name="description" content="Genzonix Dispatch LLC - Professional truck dispatching services. Maximize your loads, minimize deadhead miles. Expert dispatchers available 24/7.">
+    <meta name="keywords" content="truck dispatching, freight dispatch, load booking, carrier services, trucking logistics, dispatch service, owner operator dispatch">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* Reset and Base Styles */
-        * {
+        /* ===== Reset & Variables ===== */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary: #1a3a6c;
-            --secondary: #e63946;
-            --accent: #2a9d8f;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --transition: all 0.3s ease;
+            --primary: #0a1628;
+            --primary-light: #132240;
+            --accent: #00d4ff;
+            --accent-glow: rgba(0, 212, 255, 0.3);
+            --accent-secondary: #7c3aed;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.15);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #fff;
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--gray-700);
+            background: var(--white);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* ===== Utility ===== */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
         }
 
         section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            font-weight: 700;
-        }
-
-        h1 {
-            font-size: 3rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-        }
-
-        h3 {
-            font-size: 1.8rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-        }
-
+        /* ===== Buttons ===== */
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             text-decoration: none;
-            font-weight: 600;
             transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
         }
 
         .btn-secondary {
-            background: var(--secondary);
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--gray-200);
         }
 
         .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-dark {
             background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
         }
 
         .btn-whatsapp {
             background: #25D366;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            font-size: 1.1rem;
+            color: var(--white);
         }
 
         .btn-whatsapp:hover {
-            background: #128C7E;
-            transform: translateY(-3px);
+            background: #1fb855;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
         }
 
-        .text-center {
-            text-align: center;
+        .btn-outline-light {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
-        .mb-4 {
-            margin-bottom: 2rem;
+        .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+            transform: translateY(-2px);
         }
 
-        /* Header Styles */
+        .btn-lg {
+            padding: 18px 40px;
+            font-size: 1.05rem;
+        }
+
+        /* ===== Header ===== */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: var(--transition);
         }
 
-        .header-container {
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 16px 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
-            margin-left: 12px;
         }
 
         .logo-text span {
-            color: var(--secondary);
-            margin-left: 12px;
+            color: var(--accent);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
+            align-items: center;
+            gap: 8px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.925rem;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
             transition: var(--transition);
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent);
+            background: rgba(0, 212, 255, 0.06);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), #0891b2) !important;
+            color: var(--white) !important;
+            font-weight: 600 !important;
+            padding: 10px 24px !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--primary);
+            overflow: hidden;
+            padding: 120px 0 80px;
         }
 
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-
-        nav ul li a:after {
+        .hero::before {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(26, 58, 108, 0.8), rgba(26, 58, 108, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.75) 50%, rgba(10, 22, 40, 0.88) 100%),
+                url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 180px 0 100px;
-            text-align: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.06) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .hero-grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 28px;
+        }
+
+        .hero-badge i {
+            font-size: 0.7rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 3.75rem;
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        .hero h1 .text-accent {
+            background: linear-gradient(135deg, var(--accent), #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 36px;
+            max-width: 520px;
         }
 
         .hero-btns {
             display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .hero-feature-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .hero-feature-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(0, 212, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .hero-feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .hero-feature-card.featured {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: rgba(0, 212, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.15);
+        }
+
+        .hf-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-bottom: 16px;
+        }
+
+        .featured .hf-icon {
+            margin-bottom: 0;
+            width: 60px;
+            height: 60px;
+            font-size: 1.6rem;
+        }
+
+        .hf-icon.cyan {
+            background: rgba(0, 212, 255, 0.12);
+            color: var(--accent);
+        }
+
+        .hf-icon.green {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--success);
+        }
+
+        .hf-icon.purple {
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--accent-secondary);
+        }
+
+        .hf-icon.amber {
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--warning);
+        }
+
+        .hero-feature-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .hero-feature-card p {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .hf-number {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-feature-card .hf-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .hf-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--success);
+        }
+
+        .hf-trucks {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .hf-truck-type {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        .hf-truck-type i {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ===== Trusted By / Logos ===== */
+        .trusted-bar {
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-100);
+            padding: 40px 0;
+        }
+
+        .trusted-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
             flex-wrap: wrap;
         }
 
-        /* About Section */
-        .about {
-            background: var(--light);
+        .trusted-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
         }
 
-        .about-content {
+        .trusted-logos {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .about-text {
-            flex: 1;
+        .trusted-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray-400);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0.6;
+            transition: var(--transition);
         }
 
-        .about-image {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .trusted-logo:hover {
+            opacity: 1;
         }
 
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .trusted-logo i {
+            font-size: 1.5rem;
         }
 
-        /* Services Section */
+        /* ===== Services ===== */
+        .services {
+            background: var(--white);
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
         .service-card {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-lg);
+            padding: 36px;
             transition: var(--transition);
-            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+            opacity: 0;
+            transition: var(--transition);
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            transform: translateY(-4px);
         }
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .service-card:hover::before {
+            opacity: 1;
         }
 
-        /* Brands Section */
-        .brands {
-            background: var(--light);
-        }
-
-        .brands-container {
+        .service-icon-wrap {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border-radius: var(--radius-md);
             display: flex;
-            justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.4rem;
+            color: var(--accent);
+            transition: var(--transition);
         }
 
-        .brand-card {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
+        .service-card:hover .service-icon-wrap {
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+            color: var(--white);
         }
 
-        .brand-logo {
-            font-size: 2.5rem;
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* ===== Why Choose Us ===== */
+        .why-us {
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.04) 0%, transparent 50%);
+        }
+
+        .why-us .section-label {
+            color: var(--accent);
+        }
+
+        .why-us .section-title {
+            color: var(--white);
+        }
+
+        .why-us .section-subtitle {
+            color: var(--gray-400);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            transition: var(--transition);
+        }
+
+        .why-card:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .why-card-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.3rem;
             margin-bottom: 20px;
         }
 
-        .brand-card h3 {
-            color: var(--primary);
+        .why-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
         }
 
-        .brand-card.genzonix {
-            border-top: 5px solid var(--accent);
+        .why-card p {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .brand-card.cooptech {
-            border-top: 5px solid var(--secondary);
+        /* ===== How It Works ===== */
+        .how-it-works {
+            background: var(--gray-50);
         }
 
-        /* Contact Section */
-        .contact-container {
-            display: flex;
-            gap: 50px;
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
         }
 
-        .contact-info {
-            flex: 1;
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--gray-200), var(--accent));
+            z-index: 0;
         }
 
-        .contact-whatsapp {
-            flex: 1;
-            background: var(--light);
-            padding: 30px;
-            border-radius: 8px;
+        .step-card {
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .whatsapp-icon {
-            font-size: 4rem;
-            color: #25D366;
-            margin-bottom: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-right: 15px;
-            margin-top: 5px;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 3px solid var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0 auto 24px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background: #128C7E;
+        .step-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.7;
         }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
+        /* ===== Equipment Types ===== */
+        .equipment {
+            background: var(--white);
         }
 
-        .footer-container {
+        .equipment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
         }
 
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 25px;
+        .equipment-card {
+            text-align: center;
+            padding: 36px 24px;
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+        }
+
+        .equipment-card:hover {
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .equipment-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .equipment-card:hover .equipment-icon {
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+            color: var(--white);
+        }
+
+        .equipment-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .equipment-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== Stats ===== */
+        .stats {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 80px 0;
             position: relative;
-            padding-bottom: 10px;
+            overflow: hidden;
         }
 
-        .footer-col h3:after {
+        .stats::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-number span {
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        /* ===== Testimonials ===== */
+        .testimonials {
+            background: var(--gray-50);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-stars {
+            color: var(--warning);
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        /* ===== Tech Stack / Software ===== */
+        .tech-section {
+            background: var(--white);
+        }
+
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tech-text .section-label,
+        .tech-text .section-title,
+        .tech-text .section-subtitle {
+            text-align: left;
+        }
+
+        .tech-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .tech-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .tech-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .tech-feature h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .tech-feature p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        .tech-visual {
+            position: relative;
+        }
+
+        .tech-dashboard {
+            background: var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-dashboard::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+        }
+
+        .dash-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .dash-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dash-dot.red { background: #ef4444; }
+        .dash-dot.yellow { background: #f59e0b; }
+        .dash-dot.green { background: #10b981; }
+
+        .dash-title {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .dash-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.04);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .dash-label {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .dash-value {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .dash-value.positive {
+            color: var(--success);
+        }
+
+        .dash-value.accent {
+            color: var(--accent);
+        }
+
+        .dash-chart {
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 80px;
+        }
+
+        .dash-bar {
+            flex: 1;
+            background: linear-gradient(to top, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.6));
+            border-radius: 4px 4px 0 0;
+            transition: var(--transition);
+        }
+
+        .dash-bar:hover {
+            background: linear-gradient(to top, rgba(0, 212, 255, 0.4), var(--accent));
+        }
+
+        /* ===== CTA Banner ===== */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 50%, var(--primary-light) 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 40%);
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .cta-content p {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== Contact ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info-cards {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 28px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card-icon {
             width: 50px;
-            height: 2px;
-            background: var(--secondary);
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: #0891b2;
+        }
+
+        .contact-form-wrap {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        .contact-form-wrap h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .contact-form-wrap > p {
+            color: var(--gray-500);
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            background: var(--white);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--white);
+        }
+
+        .footer-brand > p {
+            font-size: 0.925rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 24px;
         }
 
         .footer-col ul {
@@ -456,481 +1436,1016 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-col ul li a {
-            color: #bbb;
+            color: var(--gray-400);
             text-decoration: none;
+            font-size: 0.9rem;
             transition: var(--transition);
         }
 
         .footer-col ul li a:hover {
-            color: white;
-            padding-left: 5px;
+            color: var(--accent);
         }
 
-        .social-links {
+        .footer-bottom {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
+            padding: 28px 0;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--gray-400);
+            text-decoration: none;
             transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
+        .footer-bottom a:hover {
+            color: var(--accent);
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: #bbb;
+        .footer-legal {
+            display: flex;
+            gap: 24px;
         }
 
-        /* Legal Pages Styles */
-        .legal-container {
-            max-width: 900px;
-            margin: 100px auto 50px;
-            padding: 0 20px;
+        /* ===== WhatsApp Float ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.7rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .legal-container h1 {
-            text-align: center;
-            margin-bottom: 2rem;
+        .whatsapp-float:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
         }
 
-        .legal-section {
-            margin-bottom: 3rem;
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            animation: wa-pulse 2s ease-in-out infinite;
         }
 
-        .legal-section h2 {
-            text-align: left;
-            margin-bottom: 1.5rem;
+        @keyframes wa-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0; }
         }
 
-        .legal-section h2:after {
-            left: 0;
-            transform: none;
+        /* ===== Scroll Animations ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .legal-section ul {
-            margin-left: 20px;
-            margin-bottom: 1.5rem;
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .legal-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .back-to-home {
-            display: inline-block;
-            margin-top: 2rem;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.5rem;
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            h2 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 3rem;
             }
 
-            .about-content {
-                flex-direction: column;
+            .hero-visual {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .contact-container {
-                flex-direction: column;
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            .equipment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            .container {
+                padding: 0 20px;
             }
 
-            nav ul.show {
+            section {
+                padding: 72px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+                z-index: 1001;
+            }
+
+            nav ul.open {
                 display: flex;
             }
 
-            nav ul li {
-                margin: 10px 0;
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 12px 24px;
             }
 
-            .mobile-menu {
+            .mobile-toggle {
                 display: block;
+                z-index: 1002;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 140px 0 80px;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.25rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 24px;
             }
 
             .hero-btns {
                 flex-direction: column;
-                align-items: center;
             }
 
             .hero-btns .btn {
                 width: 100%;
-                max-width: 250px;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .equipment-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .tech-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .stat-number {
+                font-size: 2.25rem;
+            }
+
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trusted-inner {
+                flex-direction: column;
+                gap: 24px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-text">Cooperative<span>Tech</span></div>
-            </div>
-            <div class="mobile-menu">
+    <!-- ===== Header ===== -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <div class="logo-text">Genzonix<span>Dispatch</span></div>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
             <nav>
-                <ul>
+                <ul id="navMenu">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#brands">Brands</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#how-it-works">Process</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact" class="nav-cta">Get Started</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ===== Hero ===== -->
     <section class="hero" id="home">
+        <div class="hero-grid-overlay"></div>
+        <!-- Road Line Decoration -->
+        <svg class="hero-road" viewBox="0 0 1440 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:80px;z-index:2;">
+            <path d="M0,60 Q360,0 720,60 T1440,60 L1440,120 L0,120 Z" fill="rgba(248,250,252,1)"/>
+        </svg>
         <div class="container">
-            <h1>Innovative Tech Solutions & Professional Truck Dispatching</h1>
-            <p>Cooperative Tech LLC delivers cutting-edge digital services while our Genzonix brand provides expert
-                truck dispatching solutions for the modern carrier.</p>
-            <div class="hero-btns">
-                <a href="#services" class="btn">Our Services</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                <a href="https://wa.me/12027102664?text=Hi%20Cooperative%20Tech%20LLC,%20I%20would%20like%20to%20inquire%20about%20your%20services"
-                    class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Us
-                </a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-circle"></i>
+                        Dispatching Powered by Technology
+                    </div>
+                    <h1>
+                        Maximize Your Revenue.<br>
+                        <span class="text-accent">We Handle the Dispatch.</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Genzonix Dispatch combines industry expertise with cutting-edge software to keep your trucks loaded and your profits growing. Professional dispatching for owner-operators and fleets.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            <i class="fas fa-arrow-right"></i> Start Dispatching
+                        </a>
+                        <a href="#services" class="btn btn-outline-light btn-lg">
+                            Explore Services
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">500+</div>
+                            <div class="hero-stat-label">Loads Dispatched</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">98%</div>
+                            <div class="hero-stat-label">Client Retention</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">24/7</div>
+                            <div class="hero-stat-label">Support Available</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-feature-card">
+                        <div class="hf-icon cyan"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="hf-number">$3.40+</div>
+                        <h4>Avg. Rate/Mile</h4>
+                        <p>Consistent premium rates through expert negotiation</p>
+                    </div>
+                    <div class="hero-feature-card">
+                        <div class="hf-icon green"><i class="fas fa-chart-line"></i></div>
+                        <div class="hf-number">95%</div>
+                        <h4>Truck Utilization</h4>
+                        <p>Less sitting, more earning with optimized load planning</p>
+                    </div>
+                    <div class="hero-feature-card">
+                        <div class="hf-icon purple"><i class="fas fa-headset"></i></div>
+                        <h4>24/7 Live Support</h4>
+                        <p>Dedicated dispatchers always available when your drivers need them</p>
+                        <div class="hf-tag"><i class="fas fa-circle" style="font-size:6px;"></i> Always Online</div>
+                    </div>
+                    <div class="hero-feature-card">
+                        <div class="hf-icon amber"><i class="fas fa-handshake"></i></div>
+                        <h4>No Forced Dispatch</h4>
+                        <p>You approve every load. We present the options, you make the call</p>
+                        <div class="hf-tag"><i class="fas fa-shield-halved" style="font-size:8px;"></i> Carrier First</div>
+                    </div>
+                    <div class="hero-feature-card featured">
+                        <div class="hf-icon cyan"><i class="fas fa-truck-moving"></i></div>
+                        <div>
+                            <h4>All Equipment Types Dispatched</h4>
+                            <p>From 53' dry vans to box trucks — we cover it all with specialized lane expertise</p>
+                            <div class="hf-trucks">
+                                <span class="hf-truck-type"><i class="fas fa-box"></i> Dry Van</span>
+                                <span class="hf-truck-type"><i class="fas fa-snowflake"></i> Reefer</span>
+                                <span class="hf-truck-type"><i class="fas fa-pallet"></i> Flatbed</span>
+                                <span class="hf-truck-type"><i class="fas fa-truck"></i> Box Truck</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- ===== Trusted Bar ===== -->
+    <div class="trusted-bar">
         <div class="container">
-            <h2>About Cooperative Tech LLC</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Your Partner in Digital Innovation & Logistics Support</h3>
-                    <p>Cooperative Tech LLC is a registered US business providing comprehensive digital services and
-                        remote administrative support. Our dual focus on technology solutions and trucking logistics
-                        allows us to serve diverse client needs with expertise and precision.</p>
-                    <p>With our Genzonix brand, we specialize in professional truck dispatching services that help
-                        carriers optimize their operations and maximize profitability.</p>
-                    <p>Our team combines technical expertise with industry knowledge to deliver solutions that drive
-                        real business results.</p>
-                    <a href="#contact" class="btn">Learn More</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
-                        alt="Cooperative Tech LLC Team">
+            <div class="trusted-inner">
+                <div class="trusted-label">Platforms We Work With</div>
+                <div class="trusted-logos">
+                    <div class="trusted-logo"><i class="fas fa-clipboard-list"></i> DAT</div>
+                    <div class="trusted-logo"><i class="fas fa-truck"></i> Truckstop</div>
+                    <div class="trusted-logo"><i class="fas fa-satellite-dish"></i> Amazon Relay</div>
+                    <div class="trusted-logo"><i class="fas fa-boxes-stacked"></i> Uber Freight</div>
+                    <div class="trusted-logo"><i class="fas fa-chart-simple"></i> Direct Freight</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Services Section -->
+    <!-- ===== Services ===== -->
     <section class="services" id="services">
         <div class="container">
-            <h2>Our Services</h2>
+            <div class="section-header fade-up">
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-title">Comprehensive Dispatch Solutions</h2>
+                <p class="section-subtitle">End-to-end dispatching and back-office support designed to maximize your trucking revenue and minimize downtime.</p>
+            </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Digital & IT Services</h3>
-                    <p>Comprehensive digital solutions including website design, mobile app development, e-commerce
-                        setup, and custom software development.</p>
+                <div class="service-card fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-magnifying-glass-dollar"></i></div>
+                    <h3>Load Sourcing & Booking</h3>
+                    <p>We find the highest-paying loads across all major load boards and negotiate top rates with brokers and shippers on your behalf.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Marketing & Analytics</h3>
-                    <p>SEO services, Google Ads management, Facebook Ads, Power BI dashboards, and data analytics to
-                        drive your business growth.</p>
+                <div class="service-card fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-route"></i></div>
+                    <h3>Route Optimization</h3>
+                    <p>Strategic route planning to reduce deadhead miles, lower fuel costs, and keep your trucks rolling with maximum efficiency.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-truck-moving"></i>
-                    </div>
-                    <h3>Truck Dispatching</h3>
-                    <p>Professional load monitoring, booking, broker communication, and back-office support through our
-                        Genzonix brand.</p>
+                <div class="service-card fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-handshake"></i></div>
+                    <h3>Broker Negotiation</h3>
+                    <p>Our experienced dispatchers negotiate aggressively with brokers to secure premium rates that maximize your per-mile revenue.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automation & RPA</h3>
-                    <p>Streamline operations with robotic process automation, PowerApps development, and custom workflow
-                        solutions.</p>
+                <div class="service-card fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Billing & Invoicing</h3>
+                    <p>Complete back-office support including invoice generation, rate confirmations, POD management, and accounts receivable tracking.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Graphic Design & Branding</h3>
-                    <p>Creative design services including logo creation, brand identity, marketing materials, and visual
-                        content.</p>
+                <div class="service-card fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Dispatch Support</h3>
+                    <p>Round-the-clock support for your drivers. We handle check calls, detention tracking, appointment scheduling, and emergency coordination.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>IT Consulting</h3>
-                    <p>Strategic technology guidance to help your business leverage the right tools and platforms for
-                        success.</p>
+                <div class="service-card fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Performance Analytics</h3>
+                    <p>Data-driven insights with weekly performance reports, revenue tracking, and lane analysis to continuously improve your operations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brands Section -->
-    <section class="brands" id="brands">
+    <!-- ===== Why Choose Us ===== -->
+    <section class="why-us" id="why-us">
         <div class="container">
-            <h2>Our Brands</h2>
-            <div class="brands-container">
-                <div class="brand-card cooptech">
-                    <div class="brand-logo">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Cooperative Tech LLC</h3>
-                    <p>Your comprehensive technology partner offering digital services, IT solutions, and business
-                        automation. We specialize in custom software, web development, and data analytics to drive your
-                        digital transformation.</p>
-                    <ul>
-                        <li>Website & App Development</li>
-                        <li>SEO & Digital Marketing</li>
-                        <li>Power BI & Data Analytics</li>
-                        <li>RPA & Process Automation</li>
-                        <li>IT Consulting</li>
-                    </ul>
+            <div class="section-header fade-up">
+                <div class="section-label">Why Genzonix</div>
+                <h2 class="section-title">Built for Carriers Who Want More</h2>
+                <p class="section-subtitle">We're not just dispatchers &mdash; we're your strategic partner in building a more profitable trucking operation.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card fade-up">
+                    <div class="why-card-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <h3>No Forced Dispatch</h3>
+                    <p>You always have the final say. We present the best options and you choose what works for your schedule and preferences.</p>
                 </div>
-                <div class="brand-card genzonix">
-                    <div class="brand-logo">
-                        <i class="fas fa-truck-moving"></i>
-                    </div>
-                    <h3>Genzonix Truck Dispatching</h3>
-                    <p>Professional dispatch services designed to optimize carrier operations and maximize
-                        profitability. We handle load management, broker communication, and administrative support so
-                        you can focus on driving.</p>
-                    <ul>
-                        <li>Remote Load Monitoring</li>
-                        <li>Load Board Management</li>
-                        <li>Broker Communication</li>
-                        <li>Back-Office Support</li>
-                        <li>Route Planning</li>
-                    </ul>
+                <div class="why-card fade-up">
+                    <div class="why-card-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Flat percentage with no hidden fees, setup costs, or surprise charges. You see exactly what you pay for, every single time.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="why-card-icon"><i class="fas fa-users-gear"></i></div>
+                    <h3>Dedicated Dispatcher</h3>
+                    <p>Every carrier gets a dedicated dispatcher who knows your lanes, equipment, and preferences inside and out.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="why-card-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Tech-Powered Operations</h3>
+                    <p>Our in-house software expertise powers advanced tools for real-time tracking, automated alerts, and data analytics.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="why-card-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>No Long-Term Contracts</h3>
+                    <p>We earn your business every day. Month-to-month flexibility means you stay because you want to, not because you have to.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="why-card-icon"><i class="fas fa-truck-fast"></i></div>
+                    <h3>Multi-Equipment Expertise</h3>
+                    <p>Dry van, reefer, flatbed, step deck, box truck, power only &mdash; our team has deep experience dispatching across all equipment types.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ===== How It Works ===== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-label">Our Process</div>
+                <h2 class="section-title">Get Started in 4 Simple Steps</h2>
+                <p class="section-subtitle">From first contact to your first dispatched load, we make onboarding fast and hassle-free.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card fade-up">
+                    <div class="step-number">01</div>
+                    <h3>Free Consultation</h3>
+                    <p>Reach out via phone, email, or WhatsApp. We'll discuss your needs, equipment, and preferred lanes.</p>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">02</div>
+                    <h3>Quick Onboarding</h3>
+                    <p>Complete a simple setup with your MC authority, insurance docs, and preferences. Takes under 24 hours.</p>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">03</div>
+                    <h3>Assign Dispatcher</h3>
+                    <p>We pair you with a dedicated dispatcher who specializes in your equipment type and preferred lanes.</p>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">04</div>
+                    <h3>Start Hauling</h3>
+                    <p>Your dispatcher finds top-paying loads and handles all logistics so you can focus on driving and earning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Equipment Types ===== -->
+    <section class="equipment" id="equipment">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-label">Equipment Types</div>
+                <h2 class="section-title">We Dispatch All Equipment Types</h2>
+                <p class="section-subtitle">Whatever you haul, we have the expertise and broker relationships to keep you loaded.</p>
+            </div>
+            <div class="equipment-grid">
+                <div class="equipment-card fade-up">
+                    <div class="equipment-icon"><i class="fas fa-box"></i></div>
+                    <h3>Dry Van</h3>
+                    <p>Standard freight, retail, consumer goods</p>
+                </div>
+                <div class="equipment-card fade-up">
+                    <div class="equipment-icon"><i class="fas fa-snowflake"></i></div>
+                    <h3>Reefer</h3>
+                    <p>Temperature-controlled perishable cargo</p>
+                </div>
+                <div class="equipment-card fade-up">
+                    <div class="equipment-icon"><i class="fas fa-pallet"></i></div>
+                    <h3>Flatbed</h3>
+                    <p>Heavy equipment, lumber, steel, machinery</p>
+                </div>
+                <div class="equipment-card fade-up">
+                    <div class="equipment-icon"><i class="fas fa-truck-ramp-box"></i></div>
+                    <h3>Step Deck</h3>
+                    <p>Oversized loads and tall freight</p>
+                </div>
+                <div class="equipment-card fade-up">
+                    <div class="equipment-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Box Truck</h3>
+                    <p>Local & regional deliveries, last mile freight</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-up">
+                    <div class="stat-number">500<span>+</span></div>
+                    <div class="stat-label">Loads Dispatched</div>
+                </div>
+                <div class="stat-item fade-up">
+                    <div class="stat-number">$2.8<span>M+</span></div>
+                    <div class="stat-label">Revenue Generated</div>
+                </div>
+                <div class="stat-item fade-up">
+                    <div class="stat-number">98<span>%</span></div>
+                    <div class="stat-label">On-Time Delivery</div>
+                </div>
+                <div class="stat-item fade-up">
+                    <div class="stat-number">50<span>+</span></div>
+                    <div class="stat-label">Active Carriers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Technology Section ===== -->
+    <section class="tech-section" id="technology">
+        <div class="container">
+            <div class="tech-content">
+                <div class="tech-text fade-up">
+                    <div class="section-label">Powered by Software</div>
+                    <h2 class="section-title">Technology That Drives Results</h2>
+                    <p class="section-subtitle">We combine human expertise with proprietary software tools to deliver dispatching that's faster, smarter, and more profitable.</p>
+                    <div class="tech-features">
+                        <div class="tech-feature">
+                            <div class="tech-feature-icon"><i class="fas fa-satellite-dish"></i></div>
+                            <div>
+                                <h4>Real-Time Tracking</h4>
+                                <p>Monitor loads and driver positions in real time</p>
+                            </div>
+                        </div>
+                        <div class="tech-feature">
+                            <div class="tech-feature-icon"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <h4>Revenue Analytics</h4>
+                                <p>Weekly reports with lane analysis and trends</p>
+                            </div>
+                        </div>
+                        <div class="tech-feature">
+                            <div class="tech-feature-icon"><i class="fas fa-robot"></i></div>
+                            <div>
+                                <h4>Automated Alerts</h4>
+                                <p>Smart notifications for check calls and updates</p>
+                            </div>
+                        </div>
+                        <div class="tech-feature">
+                            <div class="tech-feature-icon"><i class="fas fa-database"></i></div>
+                            <div>
+                                <h4>Load Board Integration</h4>
+                                <p>Direct API connections to top load boards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-visual fade-up">
+                    <div class="tech-dashboard">
+                        <div class="dash-header">
+                            <div class="dash-dot red"></div>
+                            <div class="dash-dot yellow"></div>
+                            <div class="dash-dot green"></div>
+                            <div class="dash-title">dispatch-analytics.app</div>
+                        </div>
+                        <div class="dash-row">
+                            <div class="dash-label">Avg Rate Per Mile</div>
+                            <div class="dash-value positive">$3.42</div>
+                        </div>
+                        <div class="dash-row">
+                            <div class="dash-label">Deadhead Percentage</div>
+                            <div class="dash-value accent">8.2%</div>
+                        </div>
+                        <div class="dash-row">
+                            <div class="dash-label">Loads This Week</div>
+                            <div class="dash-value">24</div>
+                        </div>
+                        <div class="dash-row">
+                            <div class="dash-label">Weekly Revenue</div>
+                            <div class="dash-value positive">$18,640</div>
+                        </div>
+                        <div class="dash-chart">
+                            <div class="dash-bar" style="height: 45%"></div>
+                            <div class="dash-bar" style="height: 62%"></div>
+                            <div class="dash-bar" style="height: 38%"></div>
+                            <div class="dash-bar" style="height: 75%"></div>
+                            <div class="dash-bar" style="height: 55%"></div>
+                            <div class="dash-bar" style="height: 82%"></div>
+                            <div class="dash-bar" style="height: 68%"></div>
+                            <div class="dash-bar" style="height: 90%"></div>
+                            <div class="dash-bar" style="height: 72%"></div>
+                            <div class="dash-bar" style="height: 95%"></div>
+                            <div class="dash-bar" style="height: 80%"></div>
+                            <div class="dash-bar" style="height: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our Carriers Say</h2>
+                <p class="section-subtitle">Don't just take our word for it &mdash; hear from the owner-operators and fleets we work with every day.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Genzonix increased my average rate per mile by over 20%. Their negotiation skills with brokers are unmatched, and I always feel like they have my best interest at heart."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div>
+                            <div class="testimonial-name">Marcus R.</div>
+                            <div class="testimonial-role">Owner-Operator, Dry Van</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The technology behind their dispatching is what sets them apart. Real-time tracking, automated check-ins, and detailed analytics &mdash; it's like having a tech company running my dispatch."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JT</div>
+                        <div>
+                            <div class="testimonial-name">James T.</div>
+                            <div class="testimonial-role">Fleet Owner, 8 Trucks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Switching to Genzonix was the best decision for my business. My deadhead miles dropped significantly and my weekly revenue went up. Their 24/7 support is a game-changer."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SK</div>
+                        <div>
+                            <div class="testimonial-name">Sarah K.</div>
+                            <div class="testimonial-role">Owner-Operator, Reefer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA Banner ===== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content fade-up">
+                <h2>Ready to Boost Your Trucking Revenue?</h2>
+                <p>Join carriers who trust Genzonix Dispatch to keep them loaded, profitable, and stress-free. Get started with a free consultation today.</p>
+                <div class="cta-btns">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        <i class="fas fa-arrow-right"></i> Get Free Consultation
+                    </a>
+                    <a href="https://wa.me/12027102664?text=Hi%20Genzonix%20Dispatch,%20I%20am%20interested%20in%20your%20truck%20dispatching%20services." class="btn btn-whatsapp btn-lg" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Contact Us</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to transform your business with our services? Reach out to us today for a consultation.</p>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
+            <div class="section-header fade-up">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Let's Start Working Together</h2>
+                <p class="section-subtitle">Have questions or ready to get dispatched? Reach out and our team will respond within hours.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-cards fade-up">
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-location-dot"></i></div>
                         <div>
-                            <h4>Address</h4>
-                            <p>25 Catoctin Cir SE #1824, Leesburg, VA 20177</p>
+                            <h4>Office Address</h4>
+                            <p>43105 Broadlands Center Plz<br>Suite 124-4108<br>Broadlands, VA</p>
                         </div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
                         <div>
-                            <h4>Email</h4>
-                            <p>teamcooptech@gmail.com</p>
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:info@dispatch.genzonix.com">info@dispatch.genzonix.com</a></p>
                         </div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-facebook"></i>
-                        </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
                         <div>
-                            <h4>Facebook</h4>
-                            <p><a href="https://www.facebook.com/profile.php?id=61583389007366" target="_blank">Visit
-                                    Our Page</a></p>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/12027102664?text=Hi%20Genzonix%20Dispatch,%20I%20am%20interested%20in%20your%20truck%20dispatching%20services." target="_blank">+1 (202) 710-2664</a></p>
+                            <p style="font-size: 0.85rem; color: var(--gray-400); margin: 0;">Typically replies within minutes</p>
                         </div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-building"></i></div>
                         <div>
-                            <h4>Business Details</h4>
-                            <p>Registered Business Name: Cooperative Tech LLC</p>
+                            <h4>Business Entity</h4>
+                            <p>Genzonix Dispatch LLC<br>Licensed & Registered in Virginia</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-whatsapp">
-                    <div class="whatsapp-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>Contact Us via WhatsApp</h3>
-                    <p>Get quick responses and immediate assistance through WhatsApp. Our team is available to answer
-                        your questions and discuss your project requirements.</p>
-                    <a href="https://wa.me/12027102664?text=Hi%20Genzonix%20Tech%20LLC,%20I%20would%20like%20to%20inquire%20about%20your%20services"
-                        class="btn btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
-                    </a>
-                    <p class="small" style="margin-top: 15px; font-size: 0.9rem;">Typically replies within minutes</p>
+                <div class="contact-form-wrap fade-up">
+                    <h3>Request a Free Consultation</h3>
+                    <p>Fill out the form and we'll get back to you within 24 hours.</p>
+                    <form action="https://formsubmit.co/info@dispatch.genzonix.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Dispatch Inquiry - Genzonix">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="equipment">Equipment Type</label>
+                                <select id="equipment-type" name="equipment_type">
+                                    <option value="">Select type...</option>
+                                    <option value="dry-van">Dry Van</option>
+                                    <option value="reefer">Reefer</option>
+                                    <option value="flatbed">Flatbed</option>
+                                    <option value="step-deck">Step Deck</option>
+                                    <option value="box-truck">Box Truck</option>
+                                    <option value="power-only">Power Only</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="trucks">Number of Trucks</label>
+                                <select id="trucks" name="number_of_trucks">
+                                    <option value="">Select...</option>
+                                    <option value="1">1 (Owner-Operator)</option>
+                                    <option value="2-5">2 - 5 Trucks</option>
+                                    <option value="6-15">6 - 15 Trucks</option>
+                                    <option value="15+">15+ Trucks</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Needs</label>
+                            <textarea id="message" name="message" placeholder="Preferred lanes, current challenges, anything else we should know..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i> Submit Inquiry
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== Footer ===== -->
     <footer>
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>Cooperative Tech LLC</h3>
-                    <p>Providing innovative technology solutions and professional truck dispatching services to help
-                        businesses thrive in the digital age.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61583389007366" target="_blank"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="logo-text">Genzonix<span>Dispatch</span></div>
+                    </a>
+                    <p>Professional truck dispatching services powered by technology. Genzonix Dispatch LLC delivers smarter logistics for carriers across the United States.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61583389007366" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
 
                 <div class="footer-col">
-                    <h3>Quick Links</h3>
+                    <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#brands">Our Brands</a></li>
+                        <li><a href="#why-us">Why Us</a></li>
+                        <li><a href="#how-it-works">Process</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>Services</h3>
+                    <h4>Services</h4>
                     <ul>
-                        <li><a href="#">Digital & IT Services</a></li>
-                        <li><a href="#">Truck Dispatching</a></li>
-                        <li><a href="#">Marketing & Analytics</a></li>
-                        <li><a href="#">Automation & RPA</a></li>
-                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#services">Load Sourcing</a></li>
+                        <li><a href="#services">Route Optimization</a></li>
+                        <li><a href="#services">Broker Negotiation</a></li>
+                        <li><a href="#services">Billing & Invoicing</a></li>
+                        <li><a href="#services">24/7 Support</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>Legal</h3>
+                    <h4>Contact Info</h4>
                     <ul>
-                        <li><a href="terms.html">Terms & Conditions</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="mailto:info@dispatch.genzonix.com"><i class="fas fa-envelope" style="width: 20px;"></i> info@dispatch.genzonix.com</a></li>
+                        <li><a href="https://wa.me/12027102664" target="_blank"><i class="fab fa-whatsapp" style="width: 20px;"></i> +1 (202) 710-2664</a></li>
+                        <li><a href="#contact"><i class="fas fa-location-dot" style="width: 20px;"></i> Broadlands, VA</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="copyright">
-                <p>&copy; 2023 Cooperative Tech LLC. All Rights Reserved. | Registered Business: Cooperative Tech LLC |
-                    Address: 25 Catoctin Cir SE #1824, Leesburg, VA 20177</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Genzonix Dispatch LLC. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="terms.html">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/12027102664?text=Hi%20Cooperative%20Tech%20LLC,%20I%20would%20like%20to%20inquire%20about%20your%20services"
-        class="whatsapp-float" target="_blank">
+    <!-- ===== WhatsApp Float ===== -->
+    <a href="https://wa.me/12027102664?text=Hi%20Genzonix%20Dispatch,%20I%20am%20interested%20in%20your%20truck%20dispatching%20services." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- ===== Scripts ===== -->
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function () {
-            document.querySelector('nav ul').classList.toggle('show');
+        // Mobile Menu
+        const toggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.getElementById('navMenu');
+
+        toggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const icon = toggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu if open
-                    document.querySelector('nav ul').classList.remove('show');
-                }
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+                const icon = toggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
             });
         });
 
         // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            }
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const id = this.getAttribute('href');
+                if (id === '#') return;
+                const target = document.querySelector(id);
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.counted) {
+                    entry.target.dataset.counted = 'true';
+                    const text = entry.target.textContent;
+                    const match = text.match(/([\d.]+)/);
+                    if (match) {
+                        const target = parseFloat(match[1]);
+                        const suffix = text.replace(match[1], '').replace(/\s/g, '');
+                        const isDecimal = target % 1 !== 0;
+                        const duration = 2000;
+                        const steps = 60;
+                        const increment = target / steps;
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            const display = isDecimal ? current.toFixed(1) : Math.floor(current);
+                            entry.target.innerHTML = display + '<span>' + suffix + '</span>';
+                        }, duration / steps);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(c => counterObserver.observe(c));
     </script>
 </body>
 
